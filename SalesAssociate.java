@@ -27,6 +27,10 @@ public class SalesAssociate {
     public void sellPart(){
         
     }
+    
+    public void invoice(){
+        
+    }    
         
     
 }
