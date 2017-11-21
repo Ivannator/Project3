@@ -63,12 +63,48 @@ public class Warehouse {
     public String toString(){
         return name;
     }
+    /**
+     * 
+     * @return 
+     */
     public ArrayList sortNumber(){    
         Collections.sort(parts, new ComparatorByPartNumber());
         return parts;
     }
+    /**
+     * 
+     * @return 
+     */
     public ArrayList sortName(){
         Collections.sort(parts, new ComparatorByPartName());
         return parts;
+    }
+    /**
+     * 
+     * @param i
+     * @param q
+     * @param w 
+     */
+    public void moveParts(Inventory i, int q, Warehouse w){
+        Inventory in = null;
+        for (Inventory part : Warehouse.parts) {
+            if(part.getName().equals(i.getName()))
+                in = part;
+        }
+        BikePart bp = in.getBikePart();
+        int n = 0;
+        for(int a = 0; a < w.getArrayList().size(); a++){
+            Inventory inven = (Inventory) w.getArrayList().get(a);
+            if(inven.getName().equals(bp.getName())){
+                inven.upQuantity(q);
+            }
+            else
+                n++;
+        }
+        if(n == w.getArrayList().size()){
+            Inventory inv = new Inventory(bp, q);
+            w.addArrayList(inv);
+        }
+        in.downQuantity(q);
     }
 }
