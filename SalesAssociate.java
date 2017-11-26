@@ -14,6 +14,7 @@ public class SalesAssociate {
     private String user;
     private String email;
     private String pass;
+    private Warehouse w;
     
     public SalesAssociate(String f, String l, String e, String u, String p ){
         first=f;
