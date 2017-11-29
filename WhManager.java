@@ -14,6 +14,7 @@ public class WhManager extends SalesAssociate{
     private String user;
     private String email;
     private String pass;
+    private String file;
     
     public WhManager(String f, String l, String e, String u, String p, String fi ){
         super(f, l, e, u,p, fi);
