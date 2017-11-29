@@ -15,13 +15,17 @@ public class SalesAssociate {
     private String email;
     private String pass;
     private Warehouse w;
+    private String tFile;
+    private String file;
     
-    public SalesAssociate(String f, String l, String e, String u, String p ){
+    public SalesAssociate(String f, String l, String e, String u, String p, String fi ){
         first=f;
         last=l;
         email=e;
         user=u;
         pass=p;
+        file = fi;
+        tFile = u + "T.txt";
         
     }
     
@@ -31,7 +35,13 @@ public class SalesAssociate {
     
     public void invoice(){
         
-    }    
+    }
+    public String getFile(){
+        return file;
+    }
+    public String getTFile(){
+        return tFile;
+    }
         
     
 }
