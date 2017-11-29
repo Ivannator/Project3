@@ -16,8 +16,8 @@ public class OfficeManager extends SalesAssociate {
     private String email;
     private String pass;
 
-    public OfficeManager(String f, String l, String e, String u, String p) {
-        super(f, l, e, u, p);
+    public OfficeManager(String f, String l, String e, String u, String p, String fi) {
+        super(f, l, e, u, p, fi);
     }
 
     public void transactions() {
