@@ -10,7 +10,7 @@ package project3;
  *
  *@author Chris
  */
-public class Transactions {
+public class Transaction {
     private final int month;
     private final int day;
     private final int year;
