@@ -10,7 +10,6 @@
  */
 public class OfficeManager extends SalesAssociate {
     private ArrayList<SalesAssociates> sA = new ArrayList<>();
-    private ArrayList<Transactions> transactions = new ArrayList();
     private String first;
     private String last;
     private String user;
