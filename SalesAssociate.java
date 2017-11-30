@@ -9,6 +9,7 @@
  * @author Denzel Saraka
  */
 public class SalesAssociate {
+    protected ArrayList<Tranactions> t = new ArrayList<>();
     private String first;
     private String last;
     private String user;
@@ -42,6 +43,8 @@ public class SalesAssociate {
     public String getTFile(){
         return tFile;
     }
-        
+    pubilc ArrayList getTrasactions(){
+        return t;
+    }
     
 }
