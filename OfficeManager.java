@@ -9,7 +9,8 @@
  * @author Denzel Saraka
  */
 public class OfficeManager extends SalesAssociate {
-
+    private ArrayList<SalesAssociates> sA = new ArrayList<>();
+    private ArrayList<Transactions> transactions = new ArrayList();
     private String first;
     private String last;
     private String user;
@@ -21,7 +22,24 @@ public class OfficeManager extends SalesAssociate {
     }
 
     public void transactions() {
-
+        FileWriter fw = new FileWriter("transactions.txt",0);
+        BufferedWriter bw = new BufferedWriter(fw);
+        String name = "";
+        SalesAssociate salAs = null;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Calendar cal = Calendar.getInstance();
+        bw.write(dateFormat.format(cal)));
+        bw.newLine();
+        for(int i = 0 ; i < sA.size(); i++){
+            salAs = sA.get(i);
+            ArrayList tr = salAs.getTransactions();
+            name = salAs.getUsername();
+            bw.write(name);
+            bw.newLine();
+            for(int i = 0; i < tr.size(); i++){
+                bw.write(tr.get(i).getProduct() + " " + tr.get(i).getPrice());
+                bw.newLine();
+            }
     }
     public String findFile(SalesAssociate sa){
         return sa.getTFile();
