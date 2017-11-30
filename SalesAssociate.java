@@ -9,7 +9,7 @@
  * @author Denzel Saraka
  */
 public class SalesAssociate {
-    protected ArrayList<Tranactions> t = new ArrayList<>();
+    protected ArrayList<Transaction> t = new ArrayList<>();
     private String first;
     private String last;
     private String user;
@@ -27,6 +27,7 @@ public class SalesAssociate {
         pass=p;
         file = fi;
         tFile = u + "T.txt";
+        w = new Warehouse(user, file);
         
     }
     
@@ -35,7 +36,12 @@ public class SalesAssociate {
     }
     
     public void invoice(){
-        
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Calendar cal = Calendar.getInstance();
+        //*textfield*.print(dateFormat.format(cal));
+        for(int i = 0; i < t.size(); i++){
+            //*textfeld*.print(i.getProduct() + " " + i.getPrice());
+        }
     }
     public String getFile(){
         return file;
@@ -43,7 +49,7 @@ public class SalesAssociate {
     public String getTFile(){
         return tFile;
     }
-    pubilc ArrayList getTrasactions(){
+    public ArrayList getTrasactions(){
         return t;
     }
     
