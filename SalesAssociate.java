@@ -68,5 +68,11 @@ public class SalesAssociate {
     public ArrayList getTrasactions(){
         return t;
     }
+    public void sortPartsName(){
+        w.sortName();
+    }
+    public void sortPartsNumber(){
+        w.sortNumber();
+    }
     
 }
