@@ -15,8 +15,35 @@ public class WhManager extends SalesAssociate{
     private String email;
     private String pass;
     private String file;
+    private Scanner input;
+    private Warehouse w;
     
     public WhManager(String f, String l, String e, String u, String p, String fi ){
         super(f, l, e, u,p, fi);
     }
+    public void read (String a){
+        try {
+
+            Scanner input = new Scanner(System.in);
+
+            File file = new File(a);
+            input = new Scanner(file);
+            while (input.hasNextLine()) {
+                String line = input.nextLine();
+               // String[] split = line.split(",");
+
+                //BikePart bp = new BikePart(split[0], Integer.parseInt(split[1]), Double.parseDouble(split[2]), Double.parseDouble(split[3]), Boolean.parseBoolean(split[4]), Integer.parseInt(split[5]));
+                //addPart(bp);
+                System.out.println(line);
+
+            }
+            input.close();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
+        
+    
 }
