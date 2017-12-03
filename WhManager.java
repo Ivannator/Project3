@@ -17,6 +17,8 @@ public class WhManager extends SalesAssociate{
     private String file;
     private Scanner input;
     private Warehouse w;
+    private ArrayList<BikePart> inventory;
+    
     
     public WhManager(String f, String l, String e, String u, String p, String fi ){
         super(f, l, e, u,p, fi);
@@ -30,10 +32,10 @@ public class WhManager extends SalesAssociate{
             input = new Scanner(file);
             while (input.hasNextLine()) {
                 String line = input.nextLine();
-               // String[] split = line.split(",");
+               String[] split = line.split(",");
 
-                //BikePart bp = new BikePart(split[0], Integer.parseInt(split[1]), Double.parseDouble(split[2]), Double.parseDouble(split[3]), Boolean.parseBoolean(split[4]), Integer.parseInt(split[5]));
-                //addPart(bp);
+                BikePart bp = new BikePart(split[0], Integer.parseInt(split[1]), Double.parseDouble(split[2]), Double.parseDouble(split[3]), Boolean.parseBoolean(split[4]), Integer.parseInt(split[5]));
+                addPart(bp);
                 System.out.println(line);
 
             }
@@ -44,6 +46,13 @@ public class WhManager extends SalesAssociate{
         }
 
     }
+    public void addPart(BikePart b) {
+        inventory.add(b);
+    }    
+    public void addPart(BikePart b){
+        inventory.add(b);
         
+    }
+    
     
 }
