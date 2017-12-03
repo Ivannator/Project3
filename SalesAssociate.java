@@ -31,16 +31,32 @@ public class SalesAssociate {
         
     }
     
-    public void sellPart(){
-        
+    public void sellPart(String n, int q){
+        Inventory part = null;
+        for(int i = 0; i < w.getArrayList().size(); i++){
+            if(n.equalsIgnoreCase(w.getArrayList().get(i).getIName()))
+                part = w.getArrayList().get(i);
+        }
+        part.downQuantity(q);
+        double pr = 0.0;
+        if(part.getOnSale() == true)
+            pr = part.getSPrice();
+        else
+            pr = part.getPrice();
+        Transaction trans = new Transaction(part.getIName(), pr);
+        t.add(trans);
     }
     
     public void invoice(){
+        FileWriter fw = new FileWriter(user+"Invoice.txt");
+        BufferedWriter bw = new BufferedWriter(fw);
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Calendar cal = Calendar.getInstance();
-        //*textfield*.append(dateFormat.format(cal));
+        //*textfield*.append(dateFormat.format(cal) + "\n");
         for(int i = 0; i < t.size(); i++){
-            //*textfeld*.print(i.getProduct() + " " + i.getPrice());
+            //*textfeld*.append(i.getProduct() + " " + i.getPrice() + "\n");
+            bw.write(i.getProduct() + " " + i.getPrice());
+            bw.newLine();
         }
     }
     public String getFile(){
