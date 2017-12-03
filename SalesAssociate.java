@@ -38,7 +38,7 @@ public class SalesAssociate {
     public void invoice(){
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Calendar cal = Calendar.getInstance();
-        //*textfield*.print(dateFormat.format(cal));
+        //*textfield*.append(dateFormat.format(cal));
         for(int i = 0; i < t.size(); i++){
             //*textfeld*.print(i.getProduct() + " " + i.getPrice());
         }
