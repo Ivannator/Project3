@@ -74,5 +74,17 @@ public class SalesAssociate {
     public void sortPartsNumber(){
         w.sortNumber();
     }
+    public void move(String u, String part, int quantity){
+        Warehouse ware = null;
+        for(int i = 0; i < warehouses.size(); i++){
+            ware = warehouse.get(i);
+        }
+        Inventory input1 = null;
+        for(int j = 0; j < ware.getArrayList().size(); i++){
+            if(part.equals(ware.getArrayList().get(j).getIName()))
+                input = ware.getArrayList().get(j);
+        }
+        w.moveParts(input, quantity, ware);
+    }
     
 }
