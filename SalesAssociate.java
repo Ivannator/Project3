@@ -43,7 +43,7 @@ public class SalesAssociate {
             pr = part.getSPrice();
         else
             pr = part.getPrice();
-        Transaction trans = new Transaction(part.getIName(), pr);
+        Transaction trans = new Transaction(part.getIName(), pr, part.getOnSale());
         t.add(trans);
     }
     
@@ -54,8 +54,8 @@ public class SalesAssociate {
         Calendar cal = Calendar.getInstance();
         //*textfield*.append(dateFormat.format(cal) + "\n");
         for(int i = 0; i < t.size(); i++){
-            //*textfeld*.append(i.getProduct() + " " + i.getPrice() + "\n");
-            bw.write(i.getProduct() + " " + i.getPrice());
+            //*textfeld*.append(i.getProduct() + " " + i.getPrice() + " " + i.getSale() + "\n");
+            bw.write(i.getProduct() + " " + i.getPrice() + " " + i.getSale());
             bw.newLine();
         }
     }
