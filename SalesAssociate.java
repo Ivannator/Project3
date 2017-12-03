@@ -34,7 +34,7 @@ public class SalesAssociate {
     public void sellPart(String n, int q){
         Inventory part = null;
         for(int i = 0; i < w.getArrayList().size(); i++){
-            if(n.equalsIgnoreCase(w.getArrayList().get(i).getIName()))
+            if(n.equals(w.getArrayList().get(i).getIName()))
                 part = w.getArrayList().get(i);
         }
         part.downQuantity(q);
