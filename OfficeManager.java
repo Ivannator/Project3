@@ -43,5 +43,13 @@ public class OfficeManager extends SalesAssociate {
     public String findFile(SalesAssociate sa){
         return sa.getTFile();
     }
+        
+    public void orderNewParts(){
+
+    }
+        
+    public void salesCommission(){
+
+    }
 
 }
