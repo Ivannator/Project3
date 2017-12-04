@@ -37,8 +37,8 @@ public class SysAdmin extends WhManager {
         
     }
 
-    public void edit() {
-
+    public void edit(int originalPos, int newPos) {
+        
     }
 
 }
