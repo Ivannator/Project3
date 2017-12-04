@@ -53,6 +53,8 @@ public class WhManager extends SalesAssociate{
         inventory.add(b);
         
     }
-    
+    public get Warehouse getWarehouse(){
+        return w;
+    }
     
 }
