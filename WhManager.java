@@ -16,7 +16,7 @@ public class WhManager extends SalesAssociate{
     private String pass;
     private String file;
     private Scanner input;
-    private Warehouse w;
+    protected Warehouse w;
     private ArrayList<BikePart> inventory;
     
     
