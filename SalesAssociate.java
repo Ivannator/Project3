@@ -18,17 +18,25 @@ public class SalesAssociate {
     private Warehouse w;
     private String tFile;
     private String file;
+    private int position;
     
-    public SalesAssociate(String f, String l, String e, String u, String p, String fi ){
+    public SalesAssociate(String f, String l, String e, String u, String p, String fi,int po ){
         first=f;
         last=l;
         email=e;
         user=u;
         pass=p;
         file = fi;
+        position=po;
         tFile = u + "T.txt";
         w = new Warehouse(user, file);
         
+    }
+    public int getPosition(){
+        return position;
+    }
+    public void setPosition(int p){
+        position=p;
     }
     
     public void sellPart(String n, int q){
