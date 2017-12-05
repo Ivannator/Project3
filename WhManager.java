@@ -21,9 +21,8 @@ public class WhManager extends SalesAssociate{
     private int position;
     
     
-    public WhManager(String f, String l, String e, String u, String p, String fi ){
-        super(f, l, e, u,p, fi);
-        position=2;
+    public WhManager(String f, String l, String e, String u, String p, int pos, String fi ){
+        super(f, l, e, u,p,pos, fi);
     }
     public void read (String a){
         try {
