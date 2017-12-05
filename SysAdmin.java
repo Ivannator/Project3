@@ -18,10 +18,12 @@ public class SysAdmin extends WhManager {
     private String user;
     private String email;
     private String pass;
-     private ArrayList<Account> a;
+    private int position;
+    private ArrayList<Account> a;
     public SysAdmin(String f, String l, String e, String u, String p) {
         super(f, l, e, u, p);
         a= new ArrayList<Account>();
+        position = 0;
         
     }
     public void add(Account b){
