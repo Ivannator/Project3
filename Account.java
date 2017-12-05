@@ -16,7 +16,8 @@ public class Account {
     private final String username;
     private final String pass;
     private final String e;
-    private final int position;
+    //private final int position;
+    private int position;
     public Account(String fName, String lName, String uName, String password, String email, int pos){
         firstName = fName;
         lastName = lName;
