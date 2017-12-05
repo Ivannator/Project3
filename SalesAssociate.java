@@ -8,10 +8,12 @@
  *
  * @author Denzel Saraka
  */
-package FinalProject;
+package finalproject;
 
 import java.util.*;
 import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class SalesAssociate 
 {
@@ -26,7 +28,7 @@ public class SalesAssociate
     private String file;
     private int position;
     
-    public SalesAssociate(String f, String l, String e, String u, String p, int pos, String fi )
+    public SalesAssociate(String f, String l, String e, String u, String p, int pos, String fi)
     {
         first=f;
         last=l;
@@ -50,13 +52,14 @@ public class SalesAssociate
         position=p;
     }
     
-    public void sellPart(String n, int q)
+    public void sellPart(String n, int q, Warehouse w)
     {
         Inventory part = null;
         for(int i = 0; i < w.getArrayList().size(); i++)
         {
-            if(n.equals(w.getArrayList().get(i).getWName()))
-                part = w.getArrayList().get(i);
+            Inventory temp = (Inventory) w.getArrayList().get(i);
+            if(n.equals(temp.getIName()))
+                part = (Inventory) w.getArrayList().get(i);
         }
         part.downQuantity(q);
         double pr = 0.0;
@@ -68,7 +71,7 @@ public class SalesAssociate
         t.add(trans);
     }
     
-    public void invoice()
+    public void invoice() throws IOException
     {
         FileWriter fw = new FileWriter(user+"Invoice.txt");
         BufferedWriter bw = new BufferedWriter(fw);
@@ -77,7 +80,7 @@ public class SalesAssociate
         //*textfield*.append(dateFormat.format(cal) + "\n");
         for(int i = 0; i < t.size(); i++){
             //*textfeld*.append(i.getProduct() + " " + i.getPrice() + " " + i.getSale() + "\n");
-            bw.write(i.getProduct() + " " + i.getPrice() + " " + i.getSale());
+            bw.write(t.get(i).toString());
             bw.newLine();
         }
     }
@@ -85,6 +88,9 @@ public class SalesAssociate
     public String getFile()
     {
         return file;
+    }
+    public String getUsername(){
+        return user;
     }
     
     public String getTFile()
@@ -106,21 +112,22 @@ public class SalesAssociate
     {
         w.sortNumber();
     }
+    public Warehouse getWarehouse(){
+        return w;
+    }
     
-    public void move(String u, String part, int quantity)
+    public void move(SalesAssociate sa, String part, int quantity)
     {
-        Warehouse ware = null;
-        for(int i = 0; i < ware.size(); i++)
-        {
-            ware = Warehouse.get(i);
-        }
+        Warehouse ware = sa.getWarehouse();
+        ArrayList<Inventory> sales = ware.getArrayList();
         Inventory input1 = null;
-        for(int j = 0; j < ware.getArrayList().size(); i++)
+        for(int j = 0; j < sales.size(); j++)
         {
-            if(part.equals(ware.getArrayList().get(j).getIName()))
-                input = ware.getArrayList().get(j);
+            Inventory temp = sales.get(j);
+            if(part.equals(temp.getIName().equals(part)))
+                input1 = sales.get(j);
         }
-        w.moveParts(input, quantity, ware);
+        this.w.moveParts(input1, quantity, ware);
     }
     
 }

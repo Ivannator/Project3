@@ -1,3 +1,9 @@
+package finalproject;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.io.File;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,7 +23,7 @@ public class WhManager extends SalesAssociate{
     private String file;
     private Scanner input;
     protected Warehouse w;
-    private ArrayList<BikePart> inventory;
+    private ArrayList<Inventory> inventory;
     private int position;
     
     
@@ -35,8 +41,9 @@ public class WhManager extends SalesAssociate{
                 String line = input.nextLine();
                String[] split = line.split(",");
 
-                BikePart bp = new BikePart(split[0], Integer.parseInt(split[1]), Double.parseDouble(split[2]), Double.parseDouble(split[3]), Boolean.parseBoolean(split[4]), Integer.parseInt(split[5]));
-                addPart(bp);
+                BikePart bp = new BikePart(split[0], Integer.parseInt(split[1]), Double.parseDouble(split[2]), Double.parseDouble(split[3]), Boolean.parseBoolean(split[4]));
+                Inventory in = new Inventory(bp, Integer.parseInt(split[5]));
+                addPart(in);
                 System.out.println(line);
 
             }
@@ -47,14 +54,10 @@ public class WhManager extends SalesAssociate{
         }
 
     }
-    public void addPart(BikePart b) {
+    public void addPart(Inventory b) {
         inventory.add(b);
     }    
-    public void addPart(BikePart b){
-        inventory.add(b);
-        
-    }
-    public get Warehouse getWarehouse(){
+    public Warehouse getWarehouse(){
         return w;
     }
     

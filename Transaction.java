@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package project3;
+package finalproject;
 
 /**
  *
@@ -27,5 +27,9 @@ public class Transaction {
     }
     public boolean getSale(){
         return sale;
+    }
+    public String toString(){
+        String s = product + " " + price + " " + sale;
+        return s;
     }
 }

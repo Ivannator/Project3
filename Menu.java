@@ -1,3 +1,5 @@
+package finalproject;
+
 import javax.swing.*;
 import javafx.scene.*;
 import javafx.scene.control.*;

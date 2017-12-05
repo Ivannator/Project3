@@ -1,3 +1,5 @@
+package finalproject;
+
 
 import java.util.ArrayList;
 
@@ -19,9 +21,10 @@ public class SysAdmin extends OfficeManager {
     private String email;
     private String pass;
     private int position;
+    private String file;
     private ArrayList<Account> a;
-    public SysAdmin(String f, String l, String e, String u, String p, int pos) {
-        super(f, l, e, u, p, pos);
+    public SysAdmin(String f, String l, String e, String u, String p, int pos, String fi) {
+        super(f, l, e, u, p, pos, fi);
         a= new ArrayList<Account>();
         
     }
@@ -30,9 +33,9 @@ public class SysAdmin extends OfficeManager {
     }
     public void delete(String b) {
         for (Account ab : a) {
-          if (ab.getUser().equals(b)) {
-               System.out.println(ab.getName());
-               ab.remove();
+          if (ab.getUsername().equals(b)) {
+               System.out.println(ab.getUsername());
+               a.remove(ab);
             }
         }
         
@@ -40,10 +43,11 @@ public class SysAdmin extends OfficeManager {
 
     public void edit(String name, int newPos) {
         for (Account ab : a) {
-          if (ab.getUser().equals(name)) {
-               System.out.println(ab.getName()+" has recieved a position change");
+          if (ab.getUsername().equals(name)) {
+               System.out.println(ab.getUsername()+" has recieved a position change");
                ab.setPosition(newPos);
             }
-    }
+        }
 
+    }
 }

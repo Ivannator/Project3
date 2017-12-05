@@ -1,4 +1,4 @@
-package FinalProject;
+package finalproject;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -20,6 +20,7 @@ public class Menu2
     public static ArrayList<Transaction> t = new ArrayList<>();
     public static void main(String[] args) 
     {
+        
         final JFrame frame = new JFrame("JDialog Demo");
         final JButton btnLogin = new JButton("Click to login");
         ArrayList<Account> AccountList = new ArrayList<>();
@@ -135,6 +136,7 @@ public class Menu2
                                         "Continue",
                                         JOptionPane.ERROR_MESSAGE);
                                     }
+                                }
                                 }
                             });
                             m2.add(m21);
