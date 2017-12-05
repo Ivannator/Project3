@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
 import javax.swing.*;
+import javafx.collections.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
 
@@ -49,6 +51,7 @@ public class Menu2
                             mb.add(m4);
                             mb.add(m5);
                             mb.add(m6);
+                            
         
                             //Add Options to each of the menu lists.
                             /**
@@ -82,7 +85,36 @@ public class Menu2
                                 {
                                     if (permissions == 1 || permissions == 0)
                                     {
-                                        //Sell Item Code Here
+                                        JTextField ItemName = new JTextField();
+                                        JTextField Quantity = new JTextField("0");
+                                        JTextField Warehouse = new JTextField();
+
+                                        Object[] message = 
+                                        {
+                                            "Enter Item Name: ", ItemName,
+                                            "How many are being Sold: ", Quantity,
+                                            "Enter Warehouse selling: ", Warehouse,
+                                        };
+                    
+                                        String ItemInput = ItemName.getText().trim();
+                                        String QuantityInput = Quantity.getText().trim();
+                                        int UsedIQuantity = Integer.parseInt(QuantityInput);
+                                        String WarehouseInput = Warehouse.getText().trim();
+                                        int option = JOptionPane.showConfirmDialog(null, message, "Enter", JOptionPane.OK_CANCEL_OPTION);
+                                        if (option == JOptionPane.OK_OPTION) 
+                                        {
+                                            if (1 == 1) //Check if item exists in inventory to begin with
+                                            {
+                                                //Code for sell items here.
+                                            }
+                                            else //If item does not exist
+                                            {
+                                                JOptionPane.showMessageDialog(frame,
+                                                "You do not have this item to sell!",
+                                                "Continue",
+                                                JOptionPane.ERROR_MESSAGE);
+                                            }
+                                        }
                                     }
                                     else
                                     {
@@ -164,18 +196,18 @@ public class Menu2
                                     {
                                         JTextField ItemName = new JTextField();
                                         JTextField ItemSerial = new JTextField();
-                                        JTextField ListPrice = new JTextField();
-                                        JTextField SalePrice = new JTextField();
-                                        JTextField OnSale = new JTextField();
-                                        JTextField Quantity = new JTextField();
+                                        JTextField ListPriceIn = new JTextField("0");
+                                        JTextField SalePriceIn = new JTextField("0");
+                                        JTextField OnSale = new JTextField("false");
+                                        JTextField Quantity = new JTextField("0");
                                         JTextField Warehouse = new JTextField();
 
                                         Object[] message = 
                                         {
                                             "Enter Item Name: ", ItemName,
                                             "Enter Serial Number: ", ItemSerial,
-                                            "Enter List Price: ", ListPrice,
-                                            "Enter Sales Price: ", SalePrice,
+                                            "Enter List Price: ", ListPriceIn,
+                                            "Enter Sales Price: ", SalePriceIn,
                                             "Is the item on Sale?: ", OnSale,
                                             "How many are being Sold: ", Quantity,
                                             "Enter Warehouse selling: ", Warehouse,
@@ -183,9 +215,9 @@ public class Menu2
                     
                                         String ItemInput = ItemName.getText().trim();
                                         String SerialInput = ItemSerial.getText().trim();
-                                        double ListPriceInput = Double.parseDouble(ListPrice.getText().trim());
-                                        double SalePriceInput = Double.parseDouble(SalePrice.getText().trim());
-                                        boolean SaleCheckerInput = Boolean.parseBoolean(OnSale.getText().trim());
+                                        double ListPriceInput = Double.parseDouble(ListPriceIn.getText().trim());
+                                        double SalePriceInput = Double.parseDouble(SalePriceIn.getText().trim());
+                                        boolean SaleCheckerInput = Boolean.parseBoolean(OnSale.getText().toString());
                                         int QuantityInput = Integer.parseInt(Quantity.getText().trim());
                                         String WarehouseInput = Warehouse.getText().trim();
                     
@@ -221,7 +253,7 @@ public class Menu2
                                     if (permissions == 2 || permissions == 0)
                                     {
                                         JTextField ItemName = new JTextField();
-                                        JTextField Quantity = new JTextField();
+                                        JTextField Quantity = new JTextField("0");
                                         JTextField Warehouse1 = new JTextField();
                                         JTextField Warehouse2 = new JTextField();
 
@@ -391,13 +423,12 @@ public class Menu2
                                         if (option == JOptionPane.OK_OPTION) 
                                         {
                                             String UserNameInput = UserToDelete.getText().trim();
-                                            ChoiceBox cb = new ChoiceBox();
-                                            cb.getItems().addAll("Sales Associate", "Warehouse Manager", "Office Manager");
-                        
+
                                             JTextField UserAccount = new JTextField(); //call Username
                                             JTextField FirstName = new JTextField(); //call First name
                                             JTextField LastName = new JTextField(); //call Last name
-                                            JTextField Password = new JTextField(); //call Password 
+                                            JTextField Password = new JTextField(); //call Password
+                                            JTextField Position = new JTextField("0"); //call Position
                                             JTextField Email = new JTextField(); //call E-mail
                         
                                             Object[] newPopup = 
@@ -406,7 +437,7 @@ public class Menu2
                                                 "Change First Name: ", FirstName,
                                                 "Change Last Name: ", LastName,
                                                 "Change Password: ", Password,
-                                                "Change Position: ", cb,
+                                                "Change Position: ", Position,
                                                 "Change E-Mail:: ", Email,
                                             };
                         
@@ -417,7 +448,7 @@ public class Menu2
                                                 String FirstNameInput = FirstName.getText().trim();
                                                 String LastNameInput = LastName.getText().trim();
                                                 String PasswordInput = Password.getText().trim();
-                                                String ChoiceInput = cb.getValue().toString();
+                                                int ChoiceInput = Integer.parseInt(Position.getText().trim());
                                                 String EmailInput = Email.getText().trim();
                                             }
                                         }
