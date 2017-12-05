@@ -20,14 +20,14 @@ public class SalesAssociate {
     private String file;
     private int position;
     
-    public SalesAssociate(String f, String l, String e, String u, String p, String fi ){
+    public SalesAssociate(String f, String l, String e, String u, String p, int pos, String fi ){
         first=f;
         last=l;
         email=e;
         user=u;
         pass=p;
         file = fi;
-        position=1;
+        position=pos;
         tFile = u + "T.txt";
         w = new Warehouse(user, file);
         
