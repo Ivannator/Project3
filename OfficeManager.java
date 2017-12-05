@@ -18,9 +18,9 @@ public class OfficeManager extends WhManager {
     private String email;
     private String pass;
     private position;
-    public OfficeManager(String f, String l, String e, String u, String p) {
-        super(f, l, e, u, p);
-        position=3;
+    private String file;
+    public OfficeManager(String f, String l, String e, String u, String p, int pos, String fi) {
+        super(f, l, e, u, p, pos, fi);
     }
 
     public void transactions() {
