@@ -8,8 +8,14 @@
  *
  * @author Denzel Saraka
  */
-public class SalesAssociate {
-    protected ArrayList<Transaction> t = new ArrayList<>();
+package FinalProject;
+
+import java.util.*;
+import java.io.*;
+
+public class SalesAssociate 
+{
+    public static ArrayList<Transaction> t = new ArrayList<>();
     private String first;
     private String last;
     private String user;
@@ -20,7 +26,8 @@ public class SalesAssociate {
     private String file;
     private int position;
     
-    public SalesAssociate(String f, String l, String e, String u, String p, int pos, String fi ){
+    public SalesAssociate(String f, String l, String e, String u, String p, int pos, String fi )
+    {
         first=f;
         last=l;
         email=e;
@@ -32,17 +39,23 @@ public class SalesAssociate {
         w = new Warehouse(user, file);
         
     }
-    public int getPosition(){
+    
+    public int getPosition()
+    {
         return position;
     }
-    public void setPosition(int p){
+    
+    public void setPosition(int p)
+    {
         position=p;
     }
     
-    public void sellPart(String n, int q){
+    public void sellPart(String n, int q)
+    {
         Inventory part = null;
-        for(int i = 0; i < w.getArrayList().size(); i++){
-            if(n.equals(w.getArrayList().get(i).getIName()))
+        for(int i = 0; i < w.getArrayList().size(); i++)
+        {
+            if(n.equals(w.getArrayList().get(i).getWName()))
                 part = w.getArrayList().get(i);
         }
         part.downQuantity(q);
@@ -55,7 +68,8 @@ public class SalesAssociate {
         t.add(trans);
     }
     
-    public void invoice(){
+    public void invoice()
+    {
         FileWriter fw = new FileWriter(user+"Invoice.txt");
         BufferedWriter bw = new BufferedWriter(fw);
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -67,28 +81,42 @@ public class SalesAssociate {
             bw.newLine();
         }
     }
-    public String getFile(){
+    
+    public String getFile()
+    {
         return file;
     }
-    public String getTFile(){
+    
+    public String getTFile()
+    {
         return tFile;
     }
-    public ArrayList getTrasactions(){
+    
+    public static ArrayList getTransactions()
+    {
         return t;
     }
-    public void sortPartsName(){
+    
+    public void sortPartsName()
+    {
         w.sortName();
     }
-    public void sortPartsNumber(){
+    
+    public void sortPartsNumber()
+    {
         w.sortNumber();
     }
-    public void move(String u, String part, int quantity){
+    
+    public void move(String u, String part, int quantity)
+    {
         Warehouse ware = null;
-        for(int i = 0; i < warehouses.size(); i++){
-            ware = warehouse.get(i);
+        for(int i = 0; i < ware.size(); i++)
+        {
+            ware = Warehouse.get(i);
         }
         Inventory input1 = null;
-        for(int j = 0; j < ware.getArrayList().size(); i++){
+        for(int j = 0; j < ware.getArrayList().size(); i++)
+        {
             if(part.equals(ware.getArrayList().get(j).getIName()))
                 input = ware.getArrayList().get(j);
         }
