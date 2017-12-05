@@ -168,6 +168,9 @@ public class testLogin extends JDialog
     
     public static boolean LoginCheck(String username, String password) 
     {
+        //String UsernameIndex = Search through ArrayList for the UserName
+        //String PasswordIndex = take the index of the Username entered and call the password to check the one entered.
+        //Delete Erics password for later.
         if (username.equals("Eric") && password.equals("theR4tM4N")) 
         {
             return true;
