@@ -1,0 +1,6 @@
+10spFrontDerailuer,1234567897,41.0,31.5,true,3
+26inTube,1234567891,7.0,5.58,true,4
+WTB_saddle,1234567890,33.0,25.58,false,5
+carbonWheelSet,1234567905,542.31,480.0,false,1
+
+
