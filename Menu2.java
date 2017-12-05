@@ -2,6 +2,10 @@ package finalproject;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 import javax.swing.*;
 import javafx.collections.*;
@@ -16,11 +20,86 @@ import javafx.scene.control.*;
  */
 public class Menu2
 {
+    private static ArrayList<Account> profiles = new ArrayList<>();
+    public static ArrayList<WhManager> wHManagers = new ArrayList<>();
+    public static ArrayList<OfficeManager> officeManagers = new ArrayList<>();
+    public static ArrayList<SalesAssociate> salesAssociates = new ArrayList<>();
+    public static ArrayList<SysAdmin> sysAdmins = new ArrayList<>();
+    private static final ArrayList<String> fileNames = new ArrayList<>();
     private static int permissions;
     public static ArrayList<Transaction> t = new ArrayList<>();
-    public static void main(String[] args) 
+    
+    public static void main(String[] args) throws FileNotFoundException, IOException
     {
-        
+        FileReader fReader = null;
+        fReader = new FileReader("profiles.txt");
+        BufferedReader bReader = new BufferedReader(fReader);
+        String line;
+            if((line = bReader.readLine()) != null){
+                while((line = bReader.readLine()) != null){
+                    fileNames.add(line);
+                }
+            }
+        if(fileNames != null){
+            for(int i = 0; i < fileNames.size(); i++){
+                String name = fileNames.get(i);
+                fReader = new FileReader(name);
+                bReader = new BufferedReader(fReader);
+                  while((line = bReader.readLine()) != null){
+                    String[] ss = line.split(",");
+                    String user = ss[3];
+                    Account acc = new Account(ss[0], ss[1], ss[2], ss[3], ss[4], Integer.parseInt(ss[5]));
+                    profiles.add(acc);
+                    int p = Integer.parseInt(ss[5]);
+                    switch (p) {
+                        case 0:
+                            SysAdmin sysa = new SysAdmin(ss[0], ss[1], ss[2], ss[3], ss[4], Integer.parseInt(ss[5]), ss[6]);
+                            sysAdmins.add(sysa);
+                            System.out.println("SYSA");
+                            break;
+                        case 1:
+                            SalesAssociate sa = new SalesAssociate(ss[0], ss[1], ss[2], ss[3], ss[4], Integer.parseInt(ss[5]), ss[6]);
+                            salesAssociates.add(sa);
+                            System.out.println("SA");
+                            break;
+                        case 3:
+                            OfficeManager om = new OfficeManager(ss[0], ss[1], ss[2], ss[3], ss[4], Integer.parseInt(ss[5]), ss[6]);
+                            officeManagers.add(om);
+                            System.out.println("OM");
+                            break;
+                        case 2:
+                            WhManager wm = new WhManager(ss[0], ss[1], ss[2], ss[3], ss[4], Integer.parseInt(ss[5]), ss[6]);
+                            wHManagers.add(wm);
+                            System.out.println("WM");
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                for(int a = 0; a < wHManagers.size(); a++){
+                    WhManager whm = wHManagers.get(a);
+                   for(int b = 0; b < officeManagers.size(); b++){
+                       OfficeManager ofM = officeManagers.get(b);
+                       ofM.addWhManager(whm);
+                   }
+                  }
+                    }
+                    
+                } 
+        fReader = new FileReader("warehouse.txt");
+        bReader = new BufferedReader(fReader);
+        line = "";
+        if(bReader.readLine() != null){
+                while((line = bReader.readLine()) != null){
+                    String[] ss = line.split(",");
+                    BikePart bp = new BikePart(ss[0], Integer.parseInt(ss[1]), Double.parseDouble(ss[2]), Double.parseDouble(ss[3]), ss[4].equals("true"));
+                    Inventory in = new Inventory(bp, Integer.parseInt(ss[5]));
+                    WhManager whman = null;
+                    whman = wHManagers.get(0);
+                    whman.addPart(in);
+                }
+            }
+          
         final JFrame frame = new JFrame("JDialog Demo");
         final JButton btnLogin = new JButton("Click to login");
         ArrayList<Account> AccountList = new ArrayList<>();

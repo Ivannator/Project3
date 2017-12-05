@@ -9,8 +9,10 @@ public class testLogin extends JDialog
 {
     private JTextField tfUsername;
     private JPasswordField pfPassword;
+    private JTextField tfPosition;
     private JLabel lbUsername;
     private JLabel lbPassword;
+    private JLabel lbPosition;
     private JButton btnLogin;
     private JButton btnCancel;
     private JButton btnNewUser;
@@ -49,6 +51,18 @@ public class testLogin extends JDialog
         cs.gridwidth = 2;
         panel.add(pfPassword, cs);
         panel.setBorder(new LineBorder(Color.GRAY));
+        
+        lbPosition = new JLabel("Position #: ");
+        cs.gridx = 0;
+        cs.gridy = 2;
+        cs.gridwidth = 1;
+        panel.add(lbPosition, cs);
+        
+        tfPosition = new JTextField(20);
+        cs.gridx = 1;
+        cs.gridy = 2;
+        cs.gridwidth = 2;
+        panel.add(tfPosition,cs);
  
         btnLogin = new JButton("Login");
         btnLogin.addActionListener(new ActionListener() 
@@ -168,6 +182,9 @@ public class testLogin extends JDialog
         return new String(pfPassword.getPassword());
     }
     
+    public int getPosition(){
+        return Integer.parseInt(tfPosition.getText().trim());
+    }
     public static boolean LoginCheck(String username, String password) 
     {
         //String UsernameIndex = Search through ArrayList for the UserName
