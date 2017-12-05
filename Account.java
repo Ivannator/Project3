@@ -16,8 +16,8 @@ public class Account {
     private final String username;
     private final String pass;
     private final String e;
-    private final String position;
-    public Account(String fName, String lName, String uName, String password, String email, String pos){
+    private final int position;
+    public Account(String fName, String lName, String uName, String password, String email, int pos){
         firstName = fName;
         lastName = lName;
         username = uName;
@@ -31,7 +31,11 @@ public class Account {
     public String getPassword(){
         return pass;
     }
-    public String getPosition(){
+    public int getPosition(){
         return position;
     }
+    public void setPosition(int newPos){
+        position=newPos;
+    }        
+    
 }
