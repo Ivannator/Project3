@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Denzel Saraka
  */
-public class SysAdmin extends WhManager {
+public class SysAdmin extends OfficeManager {
 
     private String first;
     private String last;
