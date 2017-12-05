@@ -20,10 +20,9 @@ public class SysAdmin extends WhManager {
     private String pass;
     private int position;
     private ArrayList<Account> a;
-    public SysAdmin(String f, String l, String e, String u, String p) {
-        super(f, l, e, u, p);
+    public SysAdmin(String f, String l, String e, String u, String p, int pos) {
+        super(f, l, e, u, p, pos);
         a= new ArrayList<Account>();
-        position = 0;
         
     }
     public void add(Account b){
