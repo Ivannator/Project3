@@ -1,3 +1,5 @@
+package FinalProject;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
@@ -15,12 +17,14 @@ import javafx.scene.control.*;
 public class Menu2
 {
     private static int permissions;
-    
+    public static ArrayList<Transaction> t = new ArrayList<>();
     public static void main(String[] args) 
     {
         final JFrame frame = new JFrame("JDialog Demo");
         final JButton btnLogin = new JButton("Click to login");
- 
+        ArrayList<Account> AccountList = new ArrayList<>();
+        ArrayList<Warehouse> WarehouseList = new ArrayList<>();
+        
         btnLogin.addActionListener(
                 new ActionListener()
                 {
@@ -105,16 +109,24 @@ public class Menu2
                                         {
                                             if (1 == 1) //Check if item exists in inventory to begin with
                                             {
-                                                //Code for sell items here.
-                                            }
-                                            else //If item does not exist
+                                                Warehouse TempWH = null;
+                                            for (int i=0; i < WarehouseList.size(); i++)
                                             {
-                                                JOptionPane.showMessageDialog(frame,
-                                                "You do not have this item to sell!",
-                                                "Continue",
-                                                JOptionPane.ERROR_MESSAGE);
+                                                if (WarehouseInput.equals(WarehouseList.get(i).getWName()))
+                                                {
+                                                    TempWH = WarehouseList.get(i);
+                                                }
+                                                TempWH.sellPart(ItemInput, UsedIQuantity);
                                             }
                                         }
+                                        else //If item does not exist
+                                        {
+                                            JOptionPane.showMessageDialog(frame,
+                                            "You do not have this item to sell!",
+                                            "Continue",
+                                            JOptionPane.ERROR_MESSAGE);
+                                            }
+                                        
                                     }
                                     else
                                     {
@@ -151,9 +163,17 @@ public class Menu2
                                         if (option == JOptionPane.OK_OPTION) 
                                         {    
                                             String WarehouseInput = Warehouse.getText().trim();
+                                            Warehouse TempWH = null;
+                                            for (int i=0; i < WarehouseList.size(); i++)
+                                            {
+                                                if (WarehouseInput.equals(WarehouseList.get(i).getWName()))
+                                                {
+                                                    TempWH = WarehouseList.get(i);
+                                                }
+                                            }
                                             if (input.equals(sorter[0]))
                                             {
-                                                //Code here (Alphabet Sort)
+                                                TempWH.getWName();
                         
                                                 JOptionPane.showMessageDialog(frame,
                                                 "Warehouse has been sorted Alphabetically",
@@ -161,7 +181,7 @@ public class Menu2
                                             }
                                             else if (input.equals(sorter[1]))
                                             {
-                                                //Code here (Number Sort)
+                                                TempWH.sortNumber();
                         
                                                 JOptionPane.showMessageDialog(frame,
                                                 "Warehouse has been sorted Numerically",
@@ -195,7 +215,7 @@ public class Menu2
                                     if (permissions == 2 || permissions == 0)
                                     {
                                         JTextField ItemName = new JTextField();
-                                        JTextField ItemSerial = new JTextField();
+                                        JTextField ItemSerial = new JTextField("0");
                                         JTextField ListPriceIn = new JTextField("0");
                                         JTextField SalePriceIn = new JTextField("0");
                                         JTextField OnSale = new JTextField("false");
@@ -214,7 +234,7 @@ public class Menu2
                                         };
                     
                                         String ItemInput = ItemName.getText().trim();
-                                        String SerialInput = ItemSerial.getText().trim();
+                                        int SerialInput = Integer.parseInt(ItemSerial.getText().trim());
                                         double ListPriceInput = Double.parseDouble(ListPriceIn.getText().trim());
                                         double SalePriceInput = Double.parseDouble(SalePriceIn.getText().trim());
                                         boolean SaleCheckerInput = Boolean.parseBoolean(OnSale.getText().toString());
@@ -224,14 +244,21 @@ public class Menu2
                                         int option = JOptionPane.showConfirmDialog(null, message, "Enter", JOptionPane.OK_CANCEL_OPTION);
                                         if (option == JOptionPane.OK_OPTION) 
                                         {
+                                            Warehouse TempWH = null;
+                                            for (int i=0; i < WarehouseList.size(); i++)
+                                            {
+                                                if (WarehouseInput.equals(WarehouseList.get(i).getWName()))
+                                                {
+                                                    TempWH = WarehouseList.get(i);
+                                                }
+                                            }
                                             if (1 == 1)
                                             {
-                                                //Code for increasing item quantity in warehouse
+                                                BikePart toAdd = new BikePart(ItemInput, SerialInput, ListPriceInput, SalePriceInput, SaleCheckerInput);
+                                                Inventory toWarehouse = new Inventory(toAdd, QuantityInput);
+                                                
                                             }
-                                            else
-                                            {
-                                                //Code for adding item to array List
-                                            }
+                                            
                                         }
                                     }
                                     else
@@ -275,6 +302,14 @@ public class Menu2
                                                 String FromWarehouse = Warehouse1.getText().trim();
                                                 String ToWarehouse = Warehouse2.getText().trim();
                                                 //Code for shipping between Warehouses
+                                                Warehouse TempWH1 = null;
+                                                for (int i=0; i < WarehouseList.size(); i++)
+                                                {
+                                                    if (ToWarehouse.equals(WarehouseList.get(i).getWName()))
+                                                    {
+                                                        TempWH1 = WarehouseList.get(i);
+                                                    }
+                                                }
                                             }
                                             else
                                             {
@@ -388,8 +423,8 @@ public class Menu2
                                         if (option == JOptionPane.OK_OPTION) 
                                         {
                                             String WarehouseInput = Warehouse.getText().trim();
-                        
-                                            //Create Warehouse code here
+                                            String WarehouseFile = WarehouseInput + ".txt";
+                                            Warehouse NewWarehouse = new Warehouse(WarehouseInput, WarehouseFile);
                                         }
                                     }
                                     else
