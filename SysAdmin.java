@@ -37,8 +37,12 @@ public class SysAdmin extends WhManager {
         
     }
 
-    public void edit(int originalPos, int newPos) {
-        
+    public void edit(String name, int newPos) {
+        for (Account ab : a) {
+          if (ab.getUser().equals(name)) {
+               System.out.println(ab.getName()+" has recieved a position change");
+               ab.setPosition(newPos);
+            }
     }
 
 }
