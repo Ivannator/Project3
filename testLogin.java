@@ -2,8 +2,13 @@ package finalproject;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.*;
+import static finalproject.Menu2.wHManagers;
+import static finalproject.Menu2.officeManagers;
+import static finalproject.Menu2.salesAssociates;
+import static finalproject.Menu2.sysAdmins;
 
 public class testLogin extends JDialog
 {
@@ -69,7 +74,7 @@ public class testLogin extends JDialog
         {
             public void actionPerformed(ActionEvent e) 
             {
-                if (LoginCheck(getUsername(), getPassword())) 
+                if (LoginCheck(getUsername(), getPassword(), getPosition()) == true) 
                 {
                     JOptionPane.showMessageDialog(testLogin.this,
                             "Hi " + getUsername() + "! You have successfully logged in.",
@@ -87,6 +92,7 @@ public class testLogin extends JDialog
                     // reset username and password
                     tfUsername.setText("");
                     pfPassword.setText("");
+                    tfPosition.setText("");
                     succeeded = false;
                 }
             }
@@ -179,25 +185,49 @@ public class testLogin extends JDialog
  
     public String getPassword() 
     {
-        return new String(pfPassword.getPassword());
+        return pfPassword.getText().trim();
     }
     
     public int getPosition(){
-        return Integer.parseInt(tfPosition.getText().trim());
+        return Integer.parseInt(tfPosition.getText());
     }
-    public static boolean LoginCheck(String username, String password) 
+    public static boolean LoginCheck(String username, String password, int position) 
     {
-        //String UsernameIndex = Search through ArrayList for the UserName
-        //String PasswordIndex = take the index of the Username entered and call the password to check the one entered.
-        //Delete Erics password for later.
-        if (username.equals("Eric") && password.equals("theR4tM4N")) 
-        {
-            return true;
+        String name = "";
+        switch (position) {
+            case 0:
+                for(int i = 0; i < sysAdmins.size(); i++){
+                    if (username.equals(sysAdmins.get(i).getUser()) && password.equals(sysAdmins.get(i).getPassword())){
+                        name = sysAdmins.get(i).getName();
+                        return true;
+                    }
+                }   break;
+            case 1:
+                for(int i = 0; i < salesAssociates.size(); i++){
+                    if (username.equals(salesAssociates.get(i).getUsername()) && password.equals(salesAssociates.get(i).getPassword())){
+                        name = sysAdmins.get(i).getName();
+                        return true;
+                    }
+                }   break;
+            case 2:
+                for(int i = 0; i < wHManagers.size(); i++){
+                    if (username.equals(wHManagers.get(i).getUser()) && password.equals(wHManagers.get(i).getPassword())){
+                        name = sysAdmins.get(i).getName();
+                        return true;
+                    }
+                }   break;
+            case 3:
+                for(int i = 0; i < officeManagers.size(); i++){
+                    if (username.equals(officeManagers.get(i).getUser()) && password.equals(officeManagers.get(i).getPassword())){
+                        name = sysAdmins.get(i).getName();
+                        return true;
+                    }
+                }   break;
+            default:
+                break;
         }
-        else
-        {
-            return false;
-        }
+        return false;
+        
     }
  
     public boolean isSucceeded() 

@@ -29,17 +29,28 @@ public class Menu2
     private static int permissions;
     public static ArrayList<Transaction> t = new ArrayList<>();
     
+    public static ArrayList<WhManager> getWHManagers(){
+        return wHManagers;
+    }
+    public static ArrayList<OfficeManager> getOfficeManagers(){
+        return officeManagers;
+    }
+    public static ArrayList<SalesAssociate> getSalesAssociates(){
+        return salesAssociates;
+    }
+    public static ArrayList<SysAdmin> getSysAdmins(){
+        return sysAdmins;
+    }
+    
     public static void main(String[] args) throws FileNotFoundException, IOException
     {
         FileReader fReader = null;
         fReader = new FileReader("profiles.txt");
         BufferedReader bReader = new BufferedReader(fReader);
         String line;
-            if((line = bReader.readLine()) != null){
                 while((line = bReader.readLine()) != null){
                     fileNames.add(line);
                 }
-            }
         if(fileNames != null){
             for(int i = 0; i < fileNames.size(); i++){
                 String name = fileNames.get(i);
@@ -55,26 +66,23 @@ public class Menu2
                         case 0:
                             SysAdmin sysa = new SysAdmin(ss[0], ss[1], ss[2], ss[3], ss[4], Integer.parseInt(ss[5]), ss[6]);
                             sysAdmins.add(sysa);
-                            System.out.println("SYSA");
                             break;
                         case 1:
                             SalesAssociate sa = new SalesAssociate(ss[0], ss[1], ss[2], ss[3], ss[4], Integer.parseInt(ss[5]), ss[6]);
                             salesAssociates.add(sa);
-                            System.out.println("SA");
                             break;
                         case 3:
                             OfficeManager om = new OfficeManager(ss[0], ss[1], ss[2], ss[3], ss[4], Integer.parseInt(ss[5]), ss[6]);
                             officeManagers.add(om);
-                            System.out.println("OM");
                             break;
                         case 2:
                             WhManager wm = new WhManager(ss[0], ss[1], ss[2], ss[3], ss[4], Integer.parseInt(ss[5]), ss[6]);
                             wHManagers.add(wm);
-                            System.out.println("WM");
                             break;
                         default:
                             break;
                     }
+                    
                 }
                 for(int a = 0; a < wHManagers.size(); a++){
                     WhManager whm = wHManagers.get(a);
