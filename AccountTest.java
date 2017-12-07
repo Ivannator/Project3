@@ -49,7 +49,7 @@ public class AccountTest {
         String result = instance.getUsername();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -63,7 +63,7 @@ public class AccountTest {
         String result = instance.getPassword();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
 
     /**
@@ -77,7 +77,7 @@ public class AccountTest {
         int result = instance.getPosition();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -92,7 +92,7 @@ public class AccountTest {
         assertEquals(3, instance.getPosition());
         
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
     
 }
